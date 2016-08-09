@@ -68,6 +68,11 @@ target_link_libraries(collada_to_urdf ${ASSIMP_LIBRARIES} ${catkin_LIBRARIES} ${
 set_target_properties(collada_to_urdf PROPERTIES COMPILER_FLAGS "${ASSIMP_CXX_FLAGS} ${ASSIMP_CFLAGS_OTHER}")
 set_target_properties(collada_to_urdf PROPERTIES LINK_FLAGS "${ASSIMP_LINK_FLAGS}")
 
+add_executable(collada_to_xacro src/collada_to_xacro.cpp)
+target_link_libraries(collada_to_xacro ${ASSIMP_LIBRARIES} ${catkin_LIBRARIES} ${COLLADA_DOM_LIBRARIES} ${Boost_LIBRARIES})
+set_target_properties(collada_to_xacro PROPERTIES COMPILER_FLAGS "${ASSIMP_CXX_FLAGS} ${ASSIMP_CFLAGS_OTHER}")
+set_target_properties(collada_to_xacro PROPERTIES LINK_FLAGS "${ASSIMP_LINK_FLAGS}")
+
 if(CATKIN_ENABLE_TESTING)
   catkin_add_gtest(test_collada_writer test/test_collada_urdf.cpp)
   target_link_libraries(test_collada_writer ${PROJECT_NAME} ${catkin_LIBRARIES} ${COLLADA_DOM_LIBRARIES}  
